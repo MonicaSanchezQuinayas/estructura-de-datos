@@ -7,6 +7,7 @@ namespace Clase10Programa2
 {
     public class ArbolBinarioOrdenado
     {
+        //Guardamos la información que llega al método en el nodo//
         class Nodo
         {
             public int info;
@@ -51,7 +52,8 @@ namespace Clase10Programa2
                 }
             }
         }
-
+         //Un puntero reco en el nodo apuntado por raiz//
+         //Dentro de un while verificamos si la información del parámetro coincide con la información del nodo apuntado por reco//
         public bool Existe(int info)
         {
             Nodo reco = raiz;
@@ -87,6 +89,7 @@ namespace Clase10Programa2
 
         private void Cantidad(Nodo reco)
         {
+         //Llamamos al método recursivo y en cada visita al nodo incrementamos el atributo cant//
             if (reco != null)
             {
                 cant++;
@@ -97,6 +100,7 @@ namespace Clase10Programa2
 
         public int Cantidad()
         {
+            //Iniciar un atributo de la clase llamado cant con cero//
             cant = 0;
             Cantidad(raiz);
             return cant;
@@ -119,9 +123,14 @@ namespace Clase10Programa2
             CantidadNodosHoja(raiz);
             return cant;
         }
+        
+        
+            //Para imprimir todos los nodos en entre orden junto al nivel donde se encuentra planteamos un método recursivo//
+            //Que llegue la referencia del nodo a imprimir junto al nivel de dicho nodo//
 
         private void ImprimirEntreConNivel(Nodo reco, int nivel)
         {
+            //Cada vez que descendemos un nivel le pasamos la referencia del subárbol respectivo junto al nivel que se encuentra dicho nodo//
             if (reco != null)
             {
                 ImprimirEntreConNivel(reco.izq, nivel + 1);
@@ -146,6 +155,7 @@ namespace Clase10Programa2
                 RetornarAltura(reco.der, nivel + 1);
             }
         }
+        //Para obtener la altura del árbol procedemos en el método no recursivo a inicializar el atributo altura con el valor cero//
 
         public int RetornarAltura()
         {
@@ -154,6 +164,7 @@ namespace Clase10Programa2
             return altura;
         }
 
+        //Para imprimir el mayor valor del árbol debemos recorrer siempre por derecha hasta encontrar un nodo que almacene null//
         public void MayorValorl()
         {
             if (raiz != null)
@@ -166,6 +177,7 @@ namespace Clase10Programa2
         }
 
         public void BorrarMenor()
+        //Si el subárbol izquierdo no está vacío procedemos a descender siempre por la izquierda llevando un puntero en el nodo anterior//
         {
             if (raiz != null)
             {
