@@ -21,17 +21,28 @@ namespace Clase10Programa1
 
         public void Insertar(int info)
         {
+             // Guardamos la información que llega al método en el nodo ""nuevo"
             Nodo nuevo;
             nuevo = new Nodo();
             nuevo.info = info;
+            
+            //Creamos un nodo y disponemos los punteros izq y der a null
             nuevo.izq = null;
             nuevo.der = null;
+            
+            //Dentro de la estructura repetitiva vamos comparando info con la información del nodo
             if (raiz == null)
                 raiz = nuevo;
+            
+            //Si info es mayor a la del nodo descendemos por el subárbol derecho en caso contrario
+                //Descendemos por el subárbol izquierdo.
             else
             {
                 Nodo anterior = null, reco;
                 reco = raiz;
+                
+            //Cuando se encuentra un subárbol vacío insertar el nodo en dicho subárbol.
+                    //Para esto llevamos un puntero anterior dentro del while.
                 while (reco != null)
                 {
                     anterior = reco;
@@ -46,12 +57,17 @@ namespace Clase10Programa1
                     anterior.der = nuevo;
             }
         }
-
+          //El método ImprimirPre(), es decir el no recursivo
+            //se encarga de llamar al método recursivo pasando la dirección del nodo raiz.
 
         private void ImprimirPre(Nodo reco)
         {
+              //if si reco está apuntando a un nodo (esto es verdad si reco es distinto a null)
+                //en caso afirmativo ingresa al bloque del if.
             if (reco != null)
             {
+                  //Es la impresión de la información del nodo y los recorridos son las llamadas recursivas 
+                    //Pasando las direcciones de los subárboles izquierdo y derecho//
                 Console.Write(reco.info + " ");
                 ImprimirPre(reco.izq);
                 ImprimirPre(reco.der);
@@ -60,12 +76,14 @@ namespace Clase10Programa1
 
         public void ImprimirPre()
         {
+            
             ImprimirPre(raiz);
             Console.WriteLine();
         }
 
         private void ImprimirEntre(Nodo reco)
         {
+            //Recorrido en entreorden la visita la realizamos luego de las llamadas recursivas//
             if (reco != null)
             {
                 ImprimirEntre(reco.izq);
@@ -83,6 +101,8 @@ namespace Clase10Programa1
 
         private void ImprimirPost(Nodo reco)
         {
+            
+                //Recorrido en postorden la visita la realizamos luego de las dos llamadas recursivas//
             if (reco != null)
             {
                 ImprimirPost(reco.izq);
